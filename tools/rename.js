@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const dir = path.join("гнозия", "сапонины");
+const dir = path.join("gnozia", "anthracens");
 
 const files = fs.readdirSync(dir)
 

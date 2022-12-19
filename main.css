@@ -18,7 +18,3 @@
 .card.open .card_img {
     display: none;
 }
-
-#card_container {
-    margin: 16px;
-}
