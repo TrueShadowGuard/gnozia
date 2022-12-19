@@ -3,24 +3,30 @@ import {plantsDescriptions, lessons} from "./data.js";
 const lessonsHydrated = Object.fromEntries(lessons.map(lesson => {
   return [
     lesson.header,
-    {plants: lesson.plants.map(plantToCard(lesson.header))}
+    {plants: lesson.plants.map(plantToCard(lesson))}
   ]
 }));
 
 console.log(lessonsHydrated)
 
-function plantToCard(lessonHeader) {
+function plantToCard(lesson) {
   return function (plant, index) {
     const $card = document.createElement("div");
     $card.className = "card";
     $card.innerHTML = `
-  <img class="card_img" src="gnozia/${lessonHeader}/${index}.jpg" alt="">
+  <img class="card_img" src="gnozia/${lesson.header}/${index}.jpg" alt="">
   <div class="card_description">${marked.parse(plantsDescriptions[plant])}</div>
   `;
-    return {
+    const card = {
       plant: plant,
+      index,
+      lesson,
       $card,
     };
+
+    $card._card = card;
+
+    return card;
   }
 }
 
@@ -62,3 +68,12 @@ function clearCard() {
   $card_container.querySelector(".card")?.classList?.remove("open");
   $card_container.innerHTML = "";
 }
+
+const $lessonNextButton = document.querySelector("#lesson_next_button");
+
+$lessonNextButton.addEventListener("click", e => {
+  const card = document.querySelector(".card")._card;
+  const index = (card.index + 1) % card.lesson.plants.length;
+  clearCard();
+  $card_container.append(lessonsHydrated[card.lesson.header].plants[index].$card);
+});
