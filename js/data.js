@@ -28,7 +28,13 @@ export const lessons = [{
       "Rubia tinctorum",
       "Rhamnus cathartica",
       "Hypericum perforatum",
-      "Hypericum maculatum"
+      "Hypericum maculatum",
+      "Rheum palmatum",
+      "Rubia tinctorum",
+      "Hypericum perforatum",
+      "Rumex confertus",
+      "Aloe arborescens",
+      "Frangula alnus"
     ]
   }
 ];
