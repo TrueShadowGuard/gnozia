@@ -14,7 +14,7 @@ function plantToCard(lesson) {
     $card.innerHTML = `
   <p>${index + 1} из ${lesson.plants.length} ${lesson.header}</p>
   <img class="card_img" src="gnozia/${lesson.header}/${index}.jpg" alt="">
-  <div class="card_description">${marked.parse(plantsDescriptions[plant])}</div>
+  <div class="card_description">${marked.parse(plantsDescriptions[plant] || "")}</div>
   `;
     const card = {
       plant: plant,
