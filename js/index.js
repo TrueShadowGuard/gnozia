@@ -12,9 +12,9 @@ function plantToCard(lesson) {
     const $card = document.createElement("div");
     $card.className = "card";
     $card.innerHTML = `
+  <p>${index + 1} из ${lesson.plants.length} ${lesson.header}</p>
   <img class="card_img" src="gnozia/${lesson.header}/${index}.jpg" alt="">
   <div class="card_description">${marked.parse(plantsDescriptions[plant])}</div>
-  <p>${index + 1} из ${lesson.plants.length}</p>
   `;
     const card = {
       plant: plant,
@@ -48,31 +48,36 @@ document.querySelector("#random_button").addEventListener("click", e => {
   $card_container.append($card);
 });
 
-const $currentLesson = document.querySelector("#lesson_name")
+const $currentLesson = document.querySelector("#lesson_name");
 
-document.querySelector("#lesson_random_button").addEventListener("click", e => {
-  clearCard();
-
-  const plants = lessonsHydrated[$currentLesson.value].plants;
-  const $card = plants[Math.floor(Math.random() * plants.length)].$card;
-
-  $card_container.append($card);
+$currentLesson.addEventListener("change", e => {
+  setCard(lessonsHydrated[$currentLesson.value].plants[0].$card);
 });
 
-document.addEventListener("keypress", e => {
-  if(e.code === "Space") document.querySelector("#lesson_random_button").click();
-})
+document.querySelector("#lesson_random_button").addEventListener("click", e => {
+  const plants = lessonsHydrated[$currentLesson.value].plants;
+  const $card = plants[Math.floor(Math.random() * plants.length)].$card;
+  setCard($card);
+});
 
 function clearCard() {
   $card_container.querySelector(".card")?.classList?.remove("open");
   $card_container.innerHTML = "";
 }
 
+function setCard($card) {
+  clearCard();
+  $card_container.append($card);
+}
+
+function getCurrentCard() {
+  return document.querySelector(".card")._card;
+}
+
 const $lessonNextButton = document.querySelector("#lesson_next_button");
 
 $lessonNextButton.addEventListener("click", e => {
-  const card = document.querySelector(".card")._card;
+  const card = getCurrentCard();
   const index = (card.index + 1) % card.lesson.plants.length;
-  clearCard();
-  $card_container.append(lessonsHydrated[card.lesson.header].plants[index].$card);
+  setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
 });
