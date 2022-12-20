@@ -81,3 +81,11 @@ $lessonNextButton.addEventListener("click", e => {
   const index = (card.index + 1) % card.lesson.plants.length;
   setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
 });
+
+const $prevButton = document.querySelector("#lesson_prev_button");
+
+$prevButton.addEventListener("click", e => {
+  const card = getCurrentCard();
+  const index = card.index === 0 ? card.lesson.plants.length - 1 : card.index - 1;
+  setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
+});
