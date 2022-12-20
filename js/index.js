@@ -7,8 +7,6 @@ const lessonsHydrated = Object.fromEntries(lessons.map(lesson => {
   ]
 }));
 
-console.log(lessonsHydrated)
-
 function plantToCard(lesson) {
   return function (plant, index) {
     const $card = document.createElement("div");
@@ -16,6 +14,7 @@ function plantToCard(lesson) {
     $card.innerHTML = `
   <img class="card_img" src="gnozia/${lesson.header}/${index}.jpg" alt="">
   <div class="card_description">${marked.parse(plantsDescriptions[plant])}</div>
+  <p>${index + 1} из ${lesson.plants.length}</p>
   `;
     const card = {
       plant: plant,
