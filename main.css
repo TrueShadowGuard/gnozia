@@ -18,3 +18,7 @@
 .card.open .card_img {
     display: none;
 }
+
+input.invalid {
+    outline: 1px solid red;
+}

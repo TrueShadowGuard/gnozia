@@ -17,7 +17,7 @@ function plantToCard(lesson) {
   <div class="card_description">${marked.parse(plantsDescriptions[plant] || "")}</div>
   `;
     const card = {
-      plant: plant,
+      plant,
       index,
       lesson,
       $card,
@@ -89,3 +89,10 @@ $prevButton.addEventListener("click", e => {
   const index = card.index === 0 ? card.lesson.plants.length - 1 : card.index - 1;
   setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
 });
+
+const $testName = document.querySelector("#test_name");
+
+$testName.addEventListener("input", e => {
+  if(e.target.value !== getCurrentCard().plant) $testName.classList.add("invalid");
+  else $testName.classList.remove("invalid");
+})

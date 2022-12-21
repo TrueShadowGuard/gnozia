@@ -75,7 +75,7 @@ export const lessons = [{
       "Podophyllum peltatum",
       "Digitalis purpurea",
       "Erysimum diffusum",
-      "Primula veris",
+      "Adonis vernalis",
       "ЛРС 1",
       "ЛРС 2",
       "ЛРС 3",
