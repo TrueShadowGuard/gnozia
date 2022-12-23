@@ -1,96 +1,3 @@
-export const lessons = [{
-  header: "saponins",
-  plants: [
-    "Polemonium caeruleum",
-    "Hedera helix",
-    "Primula veris",
-    "Polemonium caeruleum",
-    "Dioscorea nipponica",
-    "Dioscorea nipponica",
-    "Dioscorea nipponica",
-    "Panax ginseng",
-    "Aesculus hippocastanum",
-    "Aralia manshurica",
-    "Glycyrrhiza glabra",
-    "Glycyrrhiza glabra",
-    "Primula veris",
-    "Hedera helix",
-    "Aesculus hippocastanum",
-    "Что это?",
-    "Glycyrrhiza glabra",
-  ]},
-  {
-    header: "anthracens",
-    plants: [
-      "Rumex confertus",
-      "Frangula alnus",
-      "Rheum palmatum",
-      "Rubia tinctorum",
-      "Rhamnus cathartica",
-      "Hypericum perforatum",
-      "Hypericum maculatum",
-      "Rheum palmatum",
-      "Rubia tinctorum",
-      "Hypericum perforatum",
-      "Rumex confertus",
-      "Aloe arborescens",
-      "Frangula alnus"
-    ]
-  },
-  {
-    header: "kolok3",
-    plants: [
-      "Dioscorea nipponica",
-      "Glycyrrhiza glabra",
-      "Rhamnus cathartica",
-      "Rhamnus cathartica",
-      "Leuzea carthamoides",
-      "Hypericum maculatum",
-      "Panax ginseng",
-      "Aralia mandshurica",
-      "Glycyrrhiza uralensis",
-      "Frangula alnus",
-      "Dioscorea nipponica",
-      "Salix alba",
-      "Rubia tinctorum",
-      "Hypericum perforatum",
-      "Schizandra chinensis",
-      "Arctostaphylos uva-ursi",
-      "Rumex confertus",
-      "Vaccinium vitis-idaea",
-      "Rheum palmatum",
-      "Frangula alnus",
-      "Silybum marianum",
-      "Salix acutifolia",
-      "Eleutherococcus senticosus",
-      "Convallaria majalis",
-      "Polemonium caeruleum",
-      "Primula veris",
-      "Aesculus hippocastanum",
-      "Glycyrrhiza glabra",
-      "Hedera helix",
-      "Erysimum diffusum",
-      "Digitalis grandiflora",
-      "Digitalis lanata",
-      "Podophyllum peltatum",
-      "Digitalis purpurea",
-      "Erysimum diffusum",
-      "Adonis vernalis",
-      "ЛРС 1",
-      "ЛРС 2",
-      "ЛРС 3",
-      "Leuzea carthamoides",
-      "ЛРС 4",
-      "ЛРС 5",
-      "ЛРС 6",
-      "ЛРС 7",
-      "ЛРС 8",
-      "ЛРС 9",
-      "ЛРС 10"
-    ]
-  }
-];
-
 export const plantsDescriptions = {
   "Primula veris": "# Primula veris\n" + "\n" + "## ЛРС\n" + "\n" + "**Primulae veris radix**\n" + "\n" + "## Препараты\n" + "\n" + "*Гербион сироп от сухого кашля с первоцветом*\n" + "\n" + "## Другое\n" + "\n" + "Содержит тритерпеновые сапонины\n",
   "Hedera helix": "# Hedera helix\n" + "\n" + "## ЛРС\n" + "\n" + "**Hederae folium**\n" + "\n" + "## Препараты\n" + "\n" + "* *Гербион сироп от кашля с плющом*\n" + "* *Гербион таблетки для рассасывания от кашля*\n" + "\n",
@@ -639,13 +546,118 @@ Podophylli rhizoma cum radicibus
 
 **ЛС:**
 
-\` \`Сок, Кардиовален(-, капли для приема внутрь – седативное и кардиотоническое действие) из травы, строфандитина ацетат (семена)`
+\` \`Сок, Кардиовален(-, капли для приема внутрь – седативное и кардиотоническое действие) из травы, строфандитина ацетат (семена)`,
+
+  "Hypericum maculatum": "",
+  "Glycyrrhiza uralensis": "",
+  "Salix alba": "",
+  "LRS": "Тут нечего писать"
 }
 
-function same(plant, as) {
+export type Plant = keyof typeof plantsDescriptions;
+
+export type Lesson = {
+  header: string,
+  plants: Plant[]
+}
+
+function same(plant: Plant, as: Plant) {
   plantsDescriptions[plant] = plantsDescriptions[as];
 }
 
 same("Hypericum maculatum", "Hypericum perforatum");
 same("Glycyrrhiza uralensis","Glycyrrhiza glabra");
 same("Salix alba", "Salix acutifolia");
+
+export const lessons: Lesson[] = [{
+  header: "saponins",
+  plants: [
+    "Polemonium caeruleum",
+    "Hedera helix",
+    "Primula veris",
+    "Polemonium caeruleum",
+    "Dioscorea nipponica",
+    "Dioscorea nipponica",
+    "Dioscorea nipponica",
+    "Panax ginseng",
+    "Aesculus hippocastanum",
+    "Aralia mandshurica",
+    "Glycyrrhiza glabra",
+    "Glycyrrhiza glabra",
+    "Primula veris",
+    "Hedera helix",
+    "Aesculus hippocastanum",
+    "Что это?",
+    "Glycyrrhiza glabra",
+  ]},
+  {
+    header: "anthracens",
+    plants: [
+      "Rumex confertus",
+      "Frangula alnus",
+      "Rheum palmatum",
+      "Rubia tinctorum",
+      "Rhamnus cathartica",
+      "Hypericum perforatum",
+      "Hypericum maculatum",
+      "Rheum palmatum",
+      "Rubia tinctorum",
+      "Hypericum perforatum",
+      "Rumex confertus",
+      "Aloe arborescens",
+      "Frangula alnus"
+    ]
+  },
+  {
+    header: "kolok3",
+    plants: [
+      "Dioscorea nipponica",
+      "Glycyrrhiza glabra",
+      "Rhamnus cathartica",
+      "Rhamnus cathartica",
+      "Leuzea carthamoides",
+      "Hypericum maculatum",
+      "Panax ginseng",
+      "Aralia mandshurica",
+      "Glycyrrhiza uralensis",
+      "Frangula alnus",
+      "Dioscorea nipponica",
+      "Salix alba",
+      "Rubia tinctorum",
+      "Hypericum perforatum",
+      "Schizandra chinensis",
+      "Arctostaphylos uva-ursi",
+      "Rumex confertus",
+      "Vaccinium vitis-idaea",
+      "Rheum palmatum",
+      "Frangula alnus",
+      "Silybum marianum",
+      "Salix acutifolia",
+      "Eleutherococcus senticosus",
+      "Convallaria majalis",
+      "Polemonium caeruleum",
+      "Primula veris",
+      "Aesculus hippocastanum",
+      "Glycyrrhiza glabra",
+      "Hedera helix",
+      "Erysimum diffusum",
+      "Digitalis grandiflora",
+      "Digitalis lanata",
+      "Podophyllum peltatum",
+      "Digitalis purpurea",
+      "Erysimum diffusum",
+      "Adonis vernalis",
+      "LRS",
+      "LRS",
+      "LRS",
+      "Leuzea carthamoides",
+      "LRS",
+      "LRS",
+      "LRS",
+      "LRS",
+      "LRS",
+      "LRS",
+      "LRS"
+    ]
+  }
+];

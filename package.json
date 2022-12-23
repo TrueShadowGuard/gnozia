@@ -1,0 +1,26 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently 'npx live-server --port=3001 src' 'tsc src --watch' "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrueShadowGuard/gnozia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrueShadowGuard/gnozia/issues"
+  },
+  "homepage": "https://github.com/TrueShadowGuard/gnozia#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "@types/marked": "^4.0.8"
+  }
+}
