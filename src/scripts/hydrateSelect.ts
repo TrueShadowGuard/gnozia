@@ -1,4 +1,4 @@
-import {lessons} from "./data.js";
+import {lessons} from "./data";
 
 const $select: HTMLSelectElement | null = document.querySelector("#lesson_name");
 
