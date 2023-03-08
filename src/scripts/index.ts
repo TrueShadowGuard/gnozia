@@ -24,7 +24,7 @@ plantsDescriptions.then(plantsDescriptions => {
             $card.innerHTML = `
       <p>${index + 1} из ${lesson.plants.length} ${lesson.header}</p>
       <img class="card_img" src="static/${lesson.header}/${index}.jpg" alt="">
-      <div class="card_description">${marked.parse(plantsDescriptions[plant] || "")}</div>
+      <div class="card_description">${marked.parse(plantsDescriptions[plant] || "Нет описания к " + plant)}</div>
       `;
     
             const card: PlantCard = {
@@ -115,29 +115,32 @@ plantsDescriptions.then(plantsDescriptions => {
         setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
     });
     
-    const $prevButton: HTMLButtonElement | null = document.querySelector("#lesson_prev_button");
-    if ($prevButton === null) throw "Prev button not found";
+    const $lessonPrevButton: HTMLButtonElement | null = document.querySelector("#lesson_prev_button");
+    if ($lessonPrevButton === null) throw "Prev button not found";
     
-    $prevButton.addEventListener("click", e => {
+    $lessonPrevButton.addEventListener("click", e => {
         const card = getCurrentCard();
         if (card === null) return;
     
         const index = card.index === 0 ? card.lesson.plants.length - 1 : card.index - 1;
         setCard(lessonsHydrated[card.lesson.header].plants[index].$card);
     });
-    
-    const $testName: HTMLInputElement | null = document.querySelector("#test_name");
-    if ($testName === null) throw "Test name not found";
-    
-    $testName.addEventListener("input", e => {
-        const plant = getCurrentCard()?.plant;
-        if (!plant) return;
-        const target = e.target as HTMLInputElement;
-    
-        if (target.value !== plant) $testName.classList.add("invalid");
-        else $testName.classList.remove("invalid");
-    });
 
-    $randomButton.click();
+    setCard(lessonsHydrated[$currentLesson.value].plants[0].$card);
+
+    document.addEventListener("keydown", e => {
+        console.log(e.code)
+        switch(e.code) {
+            case "ArrowLeft":
+                $lessonPrevButton.click();
+                break;
+            case "ArrowRight":
+                $lessonNextButton.click();
+                break;
+            case "Slash":
+                document.querySelector<HTMLElement>(".card")?.click();
+                break;
+        }
+    })
 })
 

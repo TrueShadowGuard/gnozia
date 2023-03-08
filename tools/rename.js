@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const dir = path.join("..", "src", "static", "kolok4");
+const dir = path.resolve("src", "static", "kolok4");
 console.log(dir);
 
 const files = fs.readdirSync(dir)
