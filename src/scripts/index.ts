@@ -1,6 +1,7 @@
 import {marked} from "marked";
 import {plantsDescriptions, lessons, Lesson} from "./data";
 import "./hydrateSelect";
+import "./fullscreen";
 
 type PlantCard = {
     plant: string;
@@ -22,7 +23,7 @@ plantsDescriptions.then(plantsDescriptions => {
             const $card: HTMLDivElement = document.createElement("div");
             $card.className = "card";
             $card.innerHTML = `
-      <p>${index + 1} из ${lesson.plants.length} ${lesson.header}</p>
+      <p class="card_index">${index + 1} из ${lesson.plants.length} ${lesson.header}</p>
       <img class="card_img" src="static/${lesson.header}/${index}.jpg" alt="">
       <div class="card_description">${marked.parse(plantsDescriptions[plant] || "Нет описания к " + plant)}</div>
       `;
@@ -129,7 +130,6 @@ plantsDescriptions.then(plantsDescriptions => {
     setCard(lessonsHydrated[$currentLesson.value].plants[0].$card);
 
     document.addEventListener("keydown", e => {
-        console.log(e.code)
         switch(e.code) {
             case "ArrowLeft":
                 $lessonPrevButton.click();
